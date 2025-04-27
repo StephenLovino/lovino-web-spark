@@ -21,9 +21,11 @@ const Section = ({ id, title, subtitle, children, className }: SectionProps) => 
     >
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">{title}</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            {title}
+          </h2>
           {subtitle && (
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {subtitle}
             </p>
           )}
