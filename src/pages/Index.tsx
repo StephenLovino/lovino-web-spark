@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -6,7 +7,7 @@ import SkillCard from "@/components/SkillCard";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, Twitter, MapPin, Html, Javascript, Cloud, Zap, Slack, Teams } from "lucide-react";
+import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, Twitter, MapPin, FileCode, FileJson, CloudCog } from "lucide-react";
 
 const Index = () => {
   useEffect(() => {
@@ -16,24 +17,24 @@ const Index = () => {
   const tools = {
     development: [
       { name: "React", icon: Code },
-      { name: "HTML5", icon: Html },
-      { name: "JavaScript", icon: Javascript },
+      { name: "HTML5", icon: FileCode },
+      { name: "JavaScript", icon: FileJson },
       { name: "VSCode", icon: Code },
       { name: "Firebase", icon: Database },
-      { name: "Vercel", icon: Cloud },
+      { name: "Vercel", icon: CloudCog },
     ],
     automation: [
-      { name: "GoHighLevel", icon: Zap },
-      { name: "Zapier", icon: Zap },
-      { name: "Make.com", icon: Zap },
-      { name: "n8n", icon: Zap },
+      { name: "GoHighLevel", icon: Briefcase },
+      { name: "Zapier", icon: Database },
+      { name: "Make.com", icon: Database },
+      { name: "n8n", icon: Database },
       { name: "Airtable", icon: Database },
     ],
     collaboration: [
       { name: "GitHub", icon: Github },
-      { name: "Google Workspace", icon: Cloud },
-      { name: "Slack", icon: Slack },
-      { name: "Microsoft 365", icon: Teams },
+      { name: "Google Workspace", icon: CloudCog },
+      { name: "Slack", icon: MessageSquare },
+      { name: "Microsoft 365", icon: MessageSquare },
     ],
   };
 
