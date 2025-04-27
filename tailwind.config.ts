@@ -105,6 +105,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        heading: ["Inter", "sans-serif"],
       },
     },
   },
