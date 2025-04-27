@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -7,13 +6,68 @@ import SkillCard from "@/components/SkillCard";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, Twitter, MapPin } from "lucide-react";
+import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, Twitter, MapPin, Html, Javascript, Cloud, Zap, Slack, Teams } from "lucide-react";
 
 const Index = () => {
-  // Update the document title
   useEffect(() => {
     document.title = "Stephen Jan Lovino | Frontend Developer & GHL Expert";
   }, []);
+
+  const tools = {
+    development: [
+      { name: "React", icon: Code },
+      { name: "HTML5", icon: Html },
+      { name: "JavaScript", icon: Javascript },
+      { name: "VSCode", icon: Code },
+      { name: "Firebase", icon: Database },
+      { name: "Vercel", icon: Cloud },
+    ],
+    automation: [
+      { name: "GoHighLevel", icon: Zap },
+      { name: "Zapier", icon: Zap },
+      { name: "Make.com", icon: Zap },
+      { name: "n8n", icon: Zap },
+      { name: "Airtable", icon: Database },
+    ],
+    collaboration: [
+      { name: "GitHub", icon: Github },
+      { name: "Google Workspace", icon: Cloud },
+      { name: "Slack", icon: Slack },
+      { name: "Microsoft 365", icon: Teams },
+    ],
+  };
+
+  const experiences = [
+    {
+      company: "Freelance",
+      role: "GoHighLevel Automation and Website Expert",
+      period: "2023 - Present",
+      descriptions: [
+        "2+ years experience in GoHighLevel platform development",
+        "Building high-converting websites and automation systems",
+        "Custom website development and business process automation",
+      ],
+    },
+    {
+      company: "Xfusion",
+      role: "Support Agent",
+      period: "Nov 2022 - Present",
+      descriptions: [
+        "Client support and technical assistance",
+        "Integration of automation tools (Zapier, Make.com)",
+        "Process optimization and documentation",
+      ],
+    },
+    {
+      company: "Wells Fargo",
+      role: "Senior Treasury Technical Support",
+      period: "Oct 2021 - Nov 2022",
+      descriptions: [
+        "Technical support and client assistance",
+        "Process documentation and optimization",
+      ],
+    },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -69,7 +123,7 @@ const Index = () => {
               Based in San Fernando, Pampanga, Philippines, I specialize in creating modern web experiences and streamlining business operations through cutting-edge technologies.
             </p>
             <p className="mb-6 text-muted-foreground">
-              With expertise in React, WordPress, and GoHighLevel, I build solutions that are not only visually appealing but also optimized for performance and conversion. My background in Computer Engineering combined with my passion for AI and automation allows me to create innovative solutions for modern businesses.
+              With over 2 years of dedicated experience in GoHighLevel development, I've been actively building websites and web applications. My expertise spans across modern web technologies and automation tools, allowing me to create comprehensive solutions for businesses.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" asChild size="sm" className="border-primary/30 hover:border-primary">
@@ -92,6 +146,59 @@ const Index = () => {
               </Button>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Experience Section */}
+      <Section
+        id="experience"
+        title="Experience"
+        subtitle="My professional journey"
+      >
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <div key={index} className="glass-effect p-6 relative">
+              <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold">{exp.company}</h3>
+                  <p className="text-primary">{exp.role}</p>
+                  <p className="text-sm text-muted-foreground">{exp.period}</p>
+                </div>
+                <ul className="space-y-2 mt-4 md:mt-0">
+                  {exp.descriptions.map((desc, i) => (
+                    <li key={i} className="text-muted-foreground flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
+                      {desc}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Tools Section */}
+      <Section
+        id="tools"
+        title="Tools & Technologies"
+        subtitle="The tools I work with daily"
+        className="bg-secondary/5"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {Object.entries(tools).map(([category, items]) => (
+            <div key={category} className="glass-effect p-6">
+              <h3 className="text-xl font-semibold capitalize mb-6">{category}</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {items.map((tool) => (
+                  <div key={tool.name} className="flex items-center gap-2">
+                    <tool.icon className="w-5 h-5 text-primary" />
+                    <span className="text-muted-foreground">{tool.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </Section>
 
