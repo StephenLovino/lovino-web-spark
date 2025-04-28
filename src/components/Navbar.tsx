@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,7 @@ const Navbar = () => {
         <div className="text-xl font-bold text-gradient">Stephen Jan Lovino</div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -52,6 +53,9 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
+          <div className="ml-2">
+            <DarkModeToggle />
+          </div>
           <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent/20">
             Resume
           </Button>
@@ -101,9 +105,12 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent/20 w-full">
-                Resume
-              </Button>
+              <div className="flex flex-col space-y-4 py-2">
+                <DarkModeToggle />
+                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent/20">
+                  Resume
+                </Button>
+              </div>
             </div>
           </div>
         )}

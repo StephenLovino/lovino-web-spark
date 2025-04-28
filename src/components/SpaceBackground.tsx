@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState, useCallback, memo } from "react";
 
 interface Particle {
@@ -23,7 +22,7 @@ const throttle = (func: Function, limit: number) => {
   };
 };
 
-const ParticleBackground = () => {
+const SpaceBackground = () => {
   const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0,
@@ -73,7 +72,7 @@ const ParticleBackground = () => {
 
     // Create a more varied opacity for a space-like effect
     const opacity = Math.random() * 0.7 + 0.1;
-
+    
     // Add some color variation for a more space-like effect
     // Use colors that match your theme - purples, blues, and teals
     const colors = [
@@ -83,7 +82,7 @@ const ParticleBackground = () => {
       'rgba(255, 255, 255, 0.9)', // White (stars)
     ];
     const color = colors[Math.floor(Math.random() * colors.length)];
-
+    
     // Apply styles
     element.style.width = `${size}px`;
     element.style.height = `${size}px`;
@@ -124,7 +123,7 @@ const ParticleBackground = () => {
     for (let i = 0; i < particleCount; i++) {
       createParticle(container);
     }
-
+    
     // Add a subtle background gradient for a space effect
     container.style.background = "radial-gradient(ellipse at center, rgba(20, 10, 30, 0.4) 0%, rgba(10, 10, 20, 0) 70%)";
 
@@ -152,12 +151,12 @@ const ParticleBackground = () => {
           }
 
           // Reset particle if it goes out of screen
-          if (particle.y < -particle.size * 2 ||
-              particle.x < -particle.size * 2 ||
+          if (particle.y < -particle.size * 2 || 
+              particle.x < -particle.size * 2 || 
               particle.x > windowSize.width + particle.size * 2) {
             particle.y = windowSize.height + particle.size;
             particle.x = Math.random() * windowSize.width;
-
+            
             // Occasionally change color when resetting
             if (Math.random() > 0.7) {
               const colors = [
@@ -191,11 +190,11 @@ const ParticleBackground = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+      className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
       aria-hidden="true"
     />
   );
 };
 
 // Wrap with memo to prevent unnecessary re-renders
-export default memo(ParticleBackground);
+export default memo(SpaceBackground);
