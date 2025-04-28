@@ -212,10 +212,10 @@ const Index = () => {
         className="bg-secondary/5"
       >
         <div className="flex flex-col lg:flex-row gap-10 items-center">
-          <div className="w-full lg:w-1/2 glass-effect p-1">
-            <div className="aspect-square w-full max-w-md mx-auto rounded-lg overflow-hidden relative">
-              {/* Add a subtle border instead of the gradient overlay */}
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-lg pointer-events-none z-10"></div>
+          <div className="w-full lg:w-1/2">
+            <div className="aspect-square w-full max-w-md mx-auto rounded-lg overflow-hidden relative bg-white">
+              {/* Simple border only */}
+              <div className="absolute inset-0 border border-primary/20 rounded-lg pointer-events-none z-10"></div>
               <img
                 src="/StephenLovino.png"
                 alt="Stephen Jan Lovino"
