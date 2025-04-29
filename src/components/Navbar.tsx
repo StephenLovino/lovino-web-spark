@@ -40,7 +40,7 @@ const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <div className="text-xl font-bold text-gradient">Stephen Jan Lovino</div>
+        <div className="text-xl font-bold text-gradient">Stephen Lovino</div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-4">
@@ -56,7 +56,12 @@ const Navbar = () => {
           <div className="ml-2">
             <DarkModeToggle />
           </div>
-          <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent/20">
+          <Button
+            variant="outline"
+            size="sm"
+            className="border-accent text-accent hover:bg-accent/20"
+            onClick={() => window.location.href = '/resume'}
+          >
             Resume
           </Button>
         </div>
@@ -107,7 +112,15 @@ const Navbar = () => {
               ))}
               <div className="flex flex-col space-y-4 py-2">
                 <DarkModeToggle />
-                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent/20">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-accent text-accent hover:bg-accent/20"
+                  onClick={() => {
+                    window.location.href = '/resume';
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
                   Resume
                 </Button>
               </div>

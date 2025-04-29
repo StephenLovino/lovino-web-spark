@@ -1,5 +1,5 @@
-// Service Worker for Stephen Jan Lovino Portfolio
-const CACHE_NAME = 'sjl-portfolio-v1';
+// Service Worker for Stephen Lovino Portfolio
+const CACHE_NAME = 'sl-portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -43,30 +43,30 @@ self.addEventListener('fetch', (event) => {
         if (response) {
           return response;
         }
-        
+
         // Clone the request
         const fetchRequest = event.request.clone();
-        
+
         return fetch(fetchRequest).then(
           (response) => {
             // Check if valid response
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
-            
+
             // Clone the response
             const responseToCache = response.clone();
-            
+
             caches.open(CACHE_NAME)
               .then((cache) => {
                 // Don't cache API calls or external resources
-                if (!event.request.url.includes('/api/') && 
-                    (event.request.url.startsWith(self.location.origin) || 
+                if (!event.request.url.includes('/api/') &&
+                    (event.request.url.startsWith(self.location.origin) ||
                      event.request.url.includes('fonts.googleapis.com'))) {
                   cache.put(event.request, responseToCache);
                 }
               });
-              
+
             return response;
           }
         );

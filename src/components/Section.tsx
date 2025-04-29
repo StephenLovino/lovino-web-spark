@@ -19,9 +19,9 @@ const Section = ({ id, title, subtitle, children, className }: SectionProps) => 
         className
       )}
     >
-      <div className="container">
+      <div className="container h-full">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-gray-300 light:from-gray-800 light:to-black">
             {title}
           </h2>
           {subtitle && (
@@ -30,7 +30,9 @@ const Section = ({ id, title, subtitle, children, className }: SectionProps) => 
             </p>
           )}
         </div>
-        {children}
+        <div className="h-full">
+          {children}
+        </div>
       </div>
     </section>
   );
