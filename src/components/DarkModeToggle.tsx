@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function DarkModeToggle() {
   const [mounted, setMounted] = useState(false);
@@ -54,18 +53,19 @@ export function DarkModeToggle() {
   if (!mounted) return null;
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      onClick={handleToggle}
-      className="rounded-full w-9 h-9 border-accent text-accent hover:bg-accent/20"
-      aria-label={currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-    >
-      {currentTheme === "dark" ? (
-        <Sun className="h-4 w-4" />
-      ) : (
-        <Moon className="h-4 w-4" />
-      )}
-    </Button>
+    <div className="relative group">
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+      <button
+        onClick={handleToggle}
+        className="relative flex items-center justify-center w-9 h-9 bg-background text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50"
+        aria-label={currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      >
+        {currentTheme === "dark" ? (
+          <Sun className="h-4 w-4 transition-transform duration-300 ease-in-out group-hover:rotate-45" />
+        ) : (
+          <Moon className="h-4 w-4 transition-transform duration-300 ease-in-out group-hover:rotate-12" />
+        )}
+      </button>
+    </div>
   );
 }
