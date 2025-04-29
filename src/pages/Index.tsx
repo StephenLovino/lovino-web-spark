@@ -6,7 +6,9 @@ import SkillCard from "@/components/SkillCard";
 import TechStack from "@/components/TechStack";
 import { Button } from "@/components/ui/button";
 import { TypeAnimation } from 'react-type-animation';
-import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, MapPin, FileCode, FileJson, CloudCog } from "lucide-react";
+import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, MapPin, FileCode, FileJson, CloudCog, Calendar } from "lucide-react";
+import CalendarDialog from "@/components/CalendarDialog";
+import FloatingChatButton from "@/components/FloatingChatButton";
 
 // Lazy load components that are not needed immediately
 // Add error boundaries to each lazy loaded component with better error handling
@@ -45,6 +47,27 @@ const GHLContactForm = lazy(() =>
             <h3 className="text-xl font-semibold mb-4">Contact Form Unavailable</h3>
             <p className="text-muted-foreground mb-4">
               Sorry, the contact form couldn't be loaded. Please email me directly at:
+            </p>
+            <a href="mailto:stephenj.lovino@gmail.com" className="text-primary hover:underline">
+              stephenj.lovino@gmail.com
+            </a>
+          </div>
+        )
+      };
+    })
+);
+
+const GHLCalendar = lazy(() =>
+  import("@/components/GHLCalendar")
+    .catch(err => {
+      console.error("Failed to load GHLCalendar:", err);
+      // Return a simple fallback component
+      return {
+        default: () => (
+          <div className="glass-effect p-6">
+            <h3 className="text-xl font-semibold mb-4">Calendar Unavailable</h3>
+            <p className="text-muted-foreground mb-4">
+              Sorry, the booking calendar couldn't be loaded. Please email me directly to schedule a meeting:
             </p>
             <a href="mailto:stephenj.lovino@gmail.com" className="text-primary hover:underline">
               stephenj.lovino@gmail.com
@@ -164,6 +187,7 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+      <FloatingChatButton />
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center">
@@ -565,6 +589,7 @@ const Index = () => {
                   <p className="font-medium">San Fernando, Pampanga, Philippines</p>
                 </div>
               </div>
+
             </div>
           </div>
           <ErrorBoundary
