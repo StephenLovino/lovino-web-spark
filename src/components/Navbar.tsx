@@ -53,7 +53,7 @@ const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <div className="ml-2">
+          <div className="ml-2 flex items-center">
             <DarkModeToggle />
           </div>
           <div className="relative group">
@@ -119,7 +119,9 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-4 py-2">
-                <DarkModeToggle />
+                <div className="flex justify-center">
+                  <DarkModeToggle />
+                </div>
                 <div className="flex justify-center">
                   <div className="relative group inline-flex">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>

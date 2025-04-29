@@ -53,17 +53,17 @@ export function DarkModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="relative group inline-flex">
+    <div className="relative group inline-block">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
       <button
         onClick={handleToggle}
-        className="relative flex items-center justify-center w-9 h-9 bg-background text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50"
+        className="relative flex items-center justify-center w-10 h-10 bg-background text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50"
         aria-label={currentTheme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
       >
         {currentTheme === "dark" ? (
-          <Sun className="h-4 w-4 transition-transform duration-300 ease-in-out group-hover:rotate-45" />
+          <Sun className="h-5 w-5 transition-transform duration-300 ease-in-out group-hover:rotate-45" />
         ) : (
-          <Moon className="h-4 w-4 transition-transform duration-300 ease-in-out group-hover:rotate-12" />
+          <Moon className="h-5 w-5 transition-transform duration-300 ease-in-out group-hover:rotate-12" />
         )}
       </button>
     </div>
