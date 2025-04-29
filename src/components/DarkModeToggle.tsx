@@ -53,7 +53,7 @@ export function DarkModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="relative group">
+    <div className="relative group inline-flex">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
       <button
         onClick={handleToggle}
