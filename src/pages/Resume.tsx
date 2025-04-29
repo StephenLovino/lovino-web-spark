@@ -84,7 +84,14 @@ const Resume = () => {
           <p className="text-xl text-primary print:text-gray-800">Frontend Developer & GoHighLevel Expert</p>
           <div className="mt-4 text-muted-foreground print:text-gray-600">
             <p>San Fernando, Pampanga, Philippines</p>
-            <p>stephenj.lovino@gmail.com</p>
+            <p>
+              <a
+                href="mailto:stephenj.lovino@gmail.com"
+                className="hover:text-primary transition-colors"
+              >
+                stephenj.lovino@gmail.com
+              </a>
+            </p>
           </div>
         </header>
 
