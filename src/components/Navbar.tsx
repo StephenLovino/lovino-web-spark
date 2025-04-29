@@ -112,17 +112,19 @@ const Navbar = () => {
               ))}
               <div className="flex flex-col space-y-4 py-2">
                 <DarkModeToggle />
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-accent text-accent hover:bg-accent/20"
-                  onClick={() => {
-                    window.location.href = '/resume';
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Resume
-                </Button>
+                <div className="flex justify-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-accent text-accent hover:bg-accent/20 w-auto"
+                    onClick={() => {
+                      window.location.href = '/resume';
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    Resume
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
