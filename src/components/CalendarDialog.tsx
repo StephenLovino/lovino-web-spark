@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode, useState } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -21,15 +21,6 @@ const CalendarDialog = ({
   children,
   onOpenChange
 }: CalendarDialogProps) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpenChange = (newOpen: boolean) => {
-    setOpen(newOpen);
-    if (onOpenChange) {
-      onOpenChange(newOpen);
-    }
-  };
-
   useEffect(() => {
     // Load the GHL form embed script when the component mounts
     const script = document.createElement('script');
@@ -46,7 +37,7 @@ const CalendarDialog = ({
   }, []);
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         {children ? (
           children

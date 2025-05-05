@@ -178,6 +178,7 @@ const Navbar = () => {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
             <CalendarDialog>
               <button
+                type="button"
                 className="relative flex items-center gap-2 dark:bg-black/40 bg-white/30 text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50 md:px-3 md:py-1.5 p-2 border dark:border-white/10 border-gray-200/20"
               >
                 <Calendar className="h-5 w-5" />
@@ -305,6 +306,7 @@ const Navbar = () => {
                     }
                   }}>
                     <button
+                      type="button"
                       className="relative w-full flex items-center justify-center gap-2 py-3 rounded-full dark:bg-black/40 bg-white/30 backdrop-blur-sm border dark:border-white/10 border-gray-200/20 group-hover:border-white/20 transition-all"
                     >
                       <Calendar className="h-5 w-5" />

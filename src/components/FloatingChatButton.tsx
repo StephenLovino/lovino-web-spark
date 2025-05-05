@@ -8,7 +8,7 @@ const FloatingChatButton = () => {
       <div className="relative group">
         <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
         <CalendarDialog>
-          <button className="relative flex items-center gap-2 bg-background text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50">
+          <button type="button" className="relative flex items-center gap-2 bg-background text-foreground hover:text-primary rounded-full shadow-lg transition-all duration-300 hover:shadow-accent/50">
             {/* On small screens, center the icon with padding */}
             <span className="md:hidden p-3">
               <MessageCircle className="h-5 w-5" />
