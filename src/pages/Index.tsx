@@ -6,7 +6,11 @@ import SkillCard from "@/components/SkillCard";
 import TechStack from "@/components/TechStack";
 import { Button } from "@/components/ui/button";
 import { TypeAnimation } from 'react-type-animation';
-import { ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, MapPin, FileCode, FileJson, CloudCog, Calendar } from "lucide-react";
+import {
+  ArrowDown, Code, Database, Briefcase, MessageSquare, Github, Linkedin, MapPin,
+  FileCode, FileJson, CloudCog, Calendar, Flame, Zap, LayoutGrid, Server,
+  Sparkles, Layers, Cpu, Workflow, Boxes
+} from "lucide-react";
 import CalendarDialog from "@/components/CalendarDialog";
 import FloatingChatButton from "@/components/FloatingChatButton";
 
@@ -30,6 +34,22 @@ const ProjectCard = lazy(() =>
                 </span>
               )) || <span className="text-xs bg-secondary rounded-full px-3 py-1 text-secondary-foreground">Project</span>}
             </div>
+          </div>
+        )
+      };
+    })
+);
+
+const FeaturedProject = lazy(() =>
+  import("@/components/FeaturedProject")
+    .catch(err => {
+      console.error("Failed to load FeaturedProject:", err);
+      // Return a simple fallback component
+      return {
+        default: (props: any) => (
+          <div className="glass-effect p-6">
+            <h3 className="text-2xl font-bold mb-2">{props.title || "Project"}</h3>
+            <p className="text-muted-foreground mb-4">{props.description || "Project details unavailable"}</p>
           </div>
         )
       };
@@ -382,8 +402,15 @@ const Index = () => {
       {/* Projects Section */}
       <Section
         id="projects"
-        title="Featured Projects"
-        subtitle="Some of my recent work"
+        title={
+          <div className="flex flex-col items-center">
+            <div className="text-sm uppercase tracking-wider mb-2 text-muted-foreground">FEATURED CASE STUDIES</div>
+            <div className="text-4xl md:text-5xl font-bold">
+              Curated <span className="text-primary">work</span>
+            </div>
+          </div>
+        }
+        subtitle=""
         className="relative"
       >
         {/* Add a subtle space-like background */}
@@ -405,148 +432,211 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="space-y-12 relative z-10">
-          {/* React Projects */}
-          <h3 className="text-xl font-medium mb-6">React Projects</h3>
-
+        <div className="space-y-24 relative z-10 mt-16">
+          {/* DevCraft Project */}
           <ErrorBoundary
             fallback={
               <div className="glass-effect p-6">
-                <h3 className="text-2xl font-bold mb-2">Launchpad Website Craft</h3>
-                <p className="text-muted-foreground mb-4">A modern agency website showcasing services in web design, branding, and business automation. Built using React, Tailwind CSS, and deployed on Vercel.</p>
+                <h3 className="text-2xl font-bold mb-2">DevCraft</h3>
+                <p className="text-muted-foreground mb-4">Crafting Digital Excellence for Your Business</p>
               </div>
             }
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
-                title="Launchpad Website Craft"
-                description="A modern agency website showcasing services in web design, branding, and business automation. Features responsive design, smooth animations, and optimized performance."
+              <FeaturedProject
+                title="DevCraft"
+                subtitle="Crafting Digital Excellence for Your Business"
+                description="We transform your ideas into powerful web solutions. Build and launch faster with our expert development team."
                 image="/projects/launchpad.jpg"
-                tags={["React", "Tailwind CSS", "Vercel", "Firebase"]}
+                tagline="Crafting Digital Excellence for Your Business"
+                features={[
+                  { text: "Custom Web Development with cutting-edge technology." },
+                  { text: "Responsive Design that works seamlessly across all devices." },
+                  { text: "Performance Optimization for lightning-fast loading times." }
+                ]}
+                technologies={[
+                  { name: "Next.js", icon: <Server className="w-4 h-4" /> },
+                  { name: "React", icon: <Code className="w-4 h-4" /> },
+                  { name: "Tailwind CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "TypeScript", icon: <FileCode className="w-4 h-4" /> },
+                  { name: "Framer Motion", icon: <Zap className="w-4 h-4" /> }
+                ]}
+                accentColor="#ff3366"
                 liveUrl="https://launchpad-website-craft.vercel.app/"
-                githubUrl="https://github.com/StephenLovino/launchpad-website"
               />
             </Suspense>
           </ErrorBoundary>
 
+          {/* Source Finder Project */}
           <ErrorBoundary
             fallback={
-              <div className="glass-effect p-6 mt-12">
-                <h3 className="text-2xl font-bold mb-2">Image Source Finder</h3>
-                <p className="text-muted-foreground mb-4">A tool that helps users find the original source of images across the web. Uses advanced image recognition and search algorithms.</p>
+              <div className="glass-effect p-6">
+                <h3 className="text-2xl font-bold mb-2">Source Finder</h3>
+                <p className="text-muted-foreground mb-4">Find the Source of Any Image or Video</p>
               </div>
             }
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
-                title="Image Source Finder"
-                description="A tool that helps users find the original source of images across the web. Uses advanced image recognition and search algorithms to trace images back to their origins."
+              <FeaturedProject
+                title="Source Finder"
+                subtitle="Find the Source of Any Image or Video"
+                description="Source Finder uses cutting-edge AI to identify the original source of images, screenshots, and video frames from movies, TV shows, anime, products, and social media."
                 image="/projects/image-source-finder.jpg"
-                tags={["React", "Tailwind CSS", "Vercel", "Supabase"]}
+                tagline="New: Image & Video Source Finder with AI Chat"
+                features={[
+                  { text: "Built with Next.js, React, and TypeScript for scalability." },
+                  { text: "Styled using Tailwind CSS with animations by Framer Motion." },
+                  { text: "Used Zustand for state management and Zod for validation." },
+                  { text: "Integrated AI-powered image recognition technology." },
+                  { text: "Designed a user-friendly interface for seamless interactions." }
+                ]}
+                technologies={[
+                  { name: "Next.js", icon: <Server className="w-4 h-4" /> },
+                  { name: "React", icon: <Code className="w-4 h-4" /> },
+                  { name: "Tailwind CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "TypeScript", icon: <FileCode className="w-4 h-4" /> },
+                  { name: "Zustand", icon: <Database className="w-4 h-4" /> },
+                  { name: "MongoDB", icon: <Database className="w-4 h-4" /> },
+                  { name: "Node.JS", icon: <Server className="w-4 h-4" /> },
+                  { name: "Express.JS", icon: <Workflow className="w-4 h-4" /> }
+                ]}
+                accentColor="#3366ff"
                 liveUrl="https://image-source-finder.vercel.app/"
-                className="mt-12"
               />
             </Suspense>
           </ErrorBoundary>
 
+          {/* Timepiece Project */}
           <ErrorBoundary
             fallback={
-              <div className="glass-effect p-6 mt-12">
+              <div className="glass-effect p-6">
                 <h3 className="text-2xl font-bold mb-2">Timepiece</h3>
-                <p className="text-muted-foreground mb-4">An elegant watch showcase and e-commerce platform featuring high-end timepieces with detailed specifications and purchasing options.</p>
+                <p className="text-muted-foreground mb-4">An elegant watch showcase and e-commerce platform.</p>
               </div>
             }
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
+              <FeaturedProject
                 title="Timepiece"
-                description="An elegant watch showcase and e-commerce platform featuring high-end timepieces with detailed specifications and purchasing options. Includes user authentication and shopping cart functionality."
+                subtitle="A luxury timepiece e-commerce platform with seamless booking capabilities."
+                description="An elegant watch showcase featuring high-end timepieces with detailed specifications and purchasing options. Includes user authentication and shopping cart functionality."
                 image="/projects/timepiece.jpg"
-                tags={["React", "Tailwind CSS", "Vercel", "Firebase"]}
+                tagline="Discover exquisite timepieces with our premium shopping experience designed for watch enthusiasts and collectors."
+                features={[
+                  { text: "Implemented secure user authentication and authorization." },
+                  { text: "Created a responsive product catalog with advanced filtering." },
+                  { text: "Integrated payment processing with Stripe and PayPal." },
+                  { text: "Built a booking system for service appointments." }
+                ]}
+                technologies={[
+                  { name: "React", icon: <Code className="w-4 h-4" /> },
+                  { name: "Tailwind CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "Firebase", icon: <Flame className="w-4 h-4" /> },
+                  { name: "Stripe", icon: <Cpu className="w-4 h-4" /> }
+                ]}
+                accentColor="#6633ff"
                 liveUrl="https://timepiece.site/"
-                className="mt-12"
               />
             </Suspense>
           </ErrorBoundary>
 
-          {/* GoHighLevel Projects */}
-          <h3 className="text-xl font-medium mb-6 mt-16">GoHighLevel Projects</h3>
-
+          {/* AHA Innovations Project */}
           <ErrorBoundary
             fallback={
               <div className="glass-effect p-6">
                 <h3 className="text-2xl font-bold mb-2">AHA Innovations</h3>
-                <p className="text-muted-foreground mb-4">A business website for a consulting firm specializing in innovation strategies and digital transformation solutions.</p>
+                <p className="text-muted-foreground mb-4">All-in-one business solutions platform for digital marketing and operations.</p>
               </div>
             }
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
+              <FeaturedProject
                 title="AHA Innovations"
-                description="A business website for a consulting firm specializing in innovation strategies and digital transformation solutions. Features custom animations, contact forms, and service showcases."
+                subtitle="All-in-One Digital Marketing Platform"
+                description="A comprehensive business solutions platform that helps businesses streamline their marketing, boost sales, and grow their operations all in one place. Features include CRM, automation, scheduling, pipeline management, and website building tools."
                 image="/projects/aha-innovations.jpg"
-                tags={["WordPress", "Custom CSS", "Responsive Design"]}
+                tagline="We help you grow your Business with Our All-in-One Digital Marketing Platform. Streamline your marketing, boost sales, and grow your business ALL IN ONE PLACE."
+                features={[
+                  { text: "Developed an all-in-one CRM and marketing automation platform." },
+                  { text: "Implemented business tools including calendar, website builder, and kanban boards." },
+                  { text: "Created a seamless e-commerce experience with cart and checkout functionality." },
+                  { text: "Designed a professional business interface with testimonial showcases." }
+                ]}
+                technologies={[
+                  { name: "WordPress", icon: <LayoutGrid className="w-4 h-4" /> },
+                  { name: "WooCommerce", icon: <Briefcase className="w-4 h-4" /> },
+                  { name: "GoHighLevel", icon: <Boxes className="w-4 h-4" /> },
+                  { name: "Custom CSS", icon: <Layers className="w-4 h-4" /> }
+                ]}
+                accentColor="#33cc66"
                 liveUrl="https://aha-innovations.com/"
               />
             </Suspense>
           </ErrorBoundary>
 
+          {/* Millennial Business Academy Project */}
           <ErrorBoundary
             fallback={
-              <div className="glass-effect p-6 mt-12">
+              <div className="glass-effect p-6">
+                <h3 className="text-2xl font-bold mb-2">Millennial Business Academy</h3>
+                <p className="text-muted-foreground mb-4">An online learning platform for data analytics and career growth.</p>
+              </div>
+            }
+          >
+            <Suspense fallback={<LoadingFallback />}>
+              <FeaturedProject
+                title="Millennial Business Academy"
+                subtitle="Master Data Analytics for Career Advancement & Success"
+                description="An online learning platform focused on data analytics skills for career growth. The platform offers courses on Power BI, SQL, Excel, and AI tools to help professionals transform data into business insights."
+                image="/projects/MilllennialBusinessAcademy.png"
+                tagline="Join analytics expert JC De las Alas and learn how to leverage Power BI, SQL, Excel, and AI tools to transform data into business insights and advance your career."
+                features={[
+                  { text: "Designed an immersive learning experience with a space-themed UI." },
+                  { text: "Implemented course catalog and learning paths functionality." },
+                  { text: "Created instructor profiles and testimonial showcases." },
+                  { text: "Integrated achievement tracking and certification systems." }
+                ]}
+                technologies={[
+                  { name: "GoHighLevel", icon: <Boxes className="w-4 h-4" /> },
+                  { name: "JavaScript", icon: <FileJson className="w-4 h-4" /> },
+                  { name: "Custom CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "Responsive Design", icon: <LayoutGrid className="w-4 h-4" /> }
+                ]}
+                accentColor="#6366f1"
+                liveUrl="https://start.millennialbusinessacademy.net/"
+              />
+            </Suspense>
+          </ErrorBoundary>
+
+          {/* Millennial Business Innovations Project */}
+          <ErrorBoundary
+            fallback={
+              <div className="glass-effect p-6">
                 <h3 className="text-2xl font-bold mb-2">Millennial Business Innovations</h3>
-                <p className="text-muted-foreground mb-4">A modern business platform showcasing innovative solutions for millennial entrepreneurs and startups.</p>
+                <p className="text-muted-foreground mb-4">A business website for a consulting firm.</p>
               </div>
             }
           >
             <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
+              <FeaturedProject
                 title="Millennial Business Innovations"
-                description="A modern business platform showcasing innovative solutions for millennial entrepreneurs and startups. Includes blog section, service offerings, and lead generation forms."
+                subtitle="A business consulting platform with integrated client management."
+                description="A business website for a consulting firm specializing in innovation strategies and digital transformation solutions. Features custom animations, contact forms, and service showcases."
                 image="/projects/millennial.jpg"
-                tags={["WordPress", "GoHighLevel", "SEO Optimization"]}
+                tagline="Transforming businesses through innovative strategies and digital solutions with our comprehensive consulting services."
+                features={[
+                  { text: "Designed a modern, professional business interface." },
+                  { text: "Integrated GoHighLevel for lead capture and client management." },
+                  { text: "Implemented custom animations and interactive elements." },
+                  { text: "Optimized for search engines and mobile responsiveness." }
+                ]}
+                technologies={[
+                  { name: "WordPress", icon: <LayoutGrid className="w-4 h-4" /> },
+                  { name: "GoHighLevel", icon: <Boxes className="w-4 h-4" /> },
+                  { name: "Custom CSS", icon: <Layers className="w-4 h-4" /> }
+                ]}
+                accentColor="#3b82f6"
                 liveUrl="https://millennialbusinessinnovations.com/"
-                className="mt-12"
-              />
-            </Suspense>
-          </ErrorBoundary>
-
-          <ErrorBoundary
-            fallback={
-              <div className="glass-effect p-6 mt-12">
-                <h3 className="text-2xl font-bold mb-2">RR Twins</h3>
-                <p className="text-muted-foreground mb-4">A vacation rentals booking website with booking capabilities powered by GoHighLevel.</p>
-              </div>
-            }
-          >
-            <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
-                title="RR Twins"
-                description="A vacation rentals booking website with booking capabilities powered by GoHighLevel. Features property listings, booking functionality, and integrated payment processing."
-                image="/projects/rrtwins.jpg"
-                tags={["GoHighLevel", "Custom Design", "Booking System", "Media Integration"]}
-                liveUrl="http://rrtwins.com/"
-                className="mt-12"
-              />
-            </Suspense>
-          </ErrorBoundary>
-
-          <ErrorBoundary
-            fallback={
-              <div className="glass-effect p-6 mt-12">
-                <h3 className="text-2xl font-bold mb-2">Undertake PH</h3>
-                <p className="text-muted-foreground mb-4">An apparel shop e-commerce website powered by GoHighLevel.</p>
-              </div>
-            }
-          >
-            <Suspense fallback={<LoadingFallback />}>
-              <ProjectCard
-                title="Undertake PH"
-                description="An apparel shop e-commerce website powered by GoHighLevel. Features product catalog, shopping cart functionality, and secure checkout process for clothing and merchandise."
-                image="/projects/undertake.jpg"
-                tags={["GoHighLevel", "E-commerce", "Product Catalog", "Custom Design"]}
-                liveUrl="http://undertakeph.com/"
-                className="mt-12"
               />
             </Suspense>
           </ErrorBoundary>
