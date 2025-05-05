@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode, useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -13,9 +13,23 @@ import { Calendar } from "lucide-react";
 interface CalendarDialogProps {
   triggerText?: string;
   children?: ReactNode;
+  onOpenChange?: (open: boolean) => void;
 }
 
-const CalendarDialog = ({ triggerText = "Schedule a Meeting", children }: CalendarDialogProps) => {
+const CalendarDialog = ({
+  triggerText = "Schedule a Meeting",
+  children,
+  onOpenChange
+}: CalendarDialogProps) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+    if (onOpenChange) {
+      onOpenChange(newOpen);
+    }
+  };
+
   useEffect(() => {
     // Load the GHL form embed script when the component mounts
     const script = document.createElement('script');
@@ -32,7 +46,7 @@ const CalendarDialog = ({ triggerText = "Schedule a Meeting", children }: Calend
   }, []);
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {children ? (
           children

@@ -299,9 +299,12 @@ const Navbar = () => {
                 {/* Book a Call button */}
                 <div className="relative group w-full">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                  <CalendarDialog>
+                  <CalendarDialog onOpenChange={(open) => {
+                    if (open) {
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}>
                     <button
-                      onClick={() => setIsMobileMenuOpen(false)}
                       className="relative w-full flex items-center justify-center gap-2 py-3 rounded-full dark:bg-black/40 bg-white/30 backdrop-blur-sm border dark:border-white/10 border-gray-200/20 group-hover:border-white/20 transition-all"
                     >
                       <Calendar className="h-5 w-5" />
