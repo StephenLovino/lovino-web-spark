@@ -2,8 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
-import { FileText, ChevronDown, Calendar, Sun, Moon } from "lucide-react";
+import { FileText, ChevronDown, Calendar, Sun, Moon, MessageCircle } from "lucide-react";
 import CalendarDialog from "@/components/CalendarDialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import MobileBookCallButton from "@/components/MobileBookCallButton";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -298,17 +300,7 @@ const Navbar = () => {
                 </button>
 
                 {/* Book a Call button */}
-                <div className="relative group w-full">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                  <a
-                    href="/calendar"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="relative w-full flex items-center justify-center gap-2 py-3 rounded-full dark:bg-black/40 bg-white/30 backdrop-blur-sm border dark:border-white/10 border-gray-200/20 group-hover:border-white/20 transition-all"
-                  >
-                    <Calendar className="h-5 w-5" />
-                    <span className="font-medium">Book a Call</span>
-                  </a>
-                </div>
+                <MobileBookCallButton onButtonClick={() => setIsMobileMenuOpen(false)} />
               </div>
             </div>
           </div>
