@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps {
   id: string;
-  title: string;
+  title: ReactNode;
   subtitle?: string;
   children: ReactNode;
   className?: string;
@@ -21,9 +21,13 @@ const Section = ({ id, title, subtitle, children, className }: SectionProps) => 
     >
       <div className="container h-full">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-gray-300 light:from-gray-800 light:to-black">
-            {title}
-          </h2>
+          {typeof title === 'string' ? (
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dark:from-white dark:to-gray-300 light:from-gray-800 light:to-black">
+              {title}
+            </h2>
+          ) : (
+            title
+          )}
           {subtitle && (
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {subtitle}
