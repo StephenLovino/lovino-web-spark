@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect, ReactNode, useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -21,23 +21,41 @@ const CalendarDialog = ({
   children,
   onOpenChange
 }: CalendarDialogProps) => {
-  useEffect(() => {
-    // Load the GHL form embed script when the component mounts
-    const script = document.createElement('script');
-    script.src = 'https://link.msgsndr.com/js/form_embed.js';
-    script.async = true;
-    document.body.appendChild(script);
+  // Use a state to track if the script has been loaded
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
-    return () => {
-      // Clean up script when component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
+  useEffect(() => {
+    // Check if the script is already in the document
+    const existingScript = document.querySelector('script[src="https://link.msgsndr.com/js/form_embed.js"]');
+
+    if (!existingScript) {
+      // Load the GHL form embed script when the component mounts
+      const script = document.createElement('script');
+      script.src = 'https://link.msgsndr.com/js/form_embed.js';
+      script.async = true;
+      script.onload = () => setScriptLoaded(true);
+      document.body.appendChild(script);
+
+      return () => {
+        // Clean up script when component unmounts
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
+      };
+    } else {
+      setScriptLoaded(true);
+    }
   }, []);
 
+  // Handle dialog open/close
+  const handleOpenChange = (open: boolean) => {
+    if (onOpenChange) {
+      onOpenChange(open);
+    }
+  };
+
   return (
-    <Dialog onOpenChange={onOpenChange}>
+    <Dialog onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {children ? (
           children
@@ -57,19 +75,25 @@ const CalendarDialog = ({
         </DialogHeader>
         <div className="calendar-container mt-4">
           <div className="overflow-y-auto" style={{ maxHeight: 'calc(80vh - 120px)' }}>
-            <iframe
-              src="https://api.leadconnectorhq.com/widget/booking/jvebjN3kNYeKPklkqlye"
-              style={{
-                width: '100%',
-                border: 'none',
-                overflow: 'visible',
-                height: '700px',
-                borderRadius: '0.5rem'
-              }}
-              scrolling="yes"
-              id="jvebjN3kNYeKPklkqlye_dialog"
-              title="Schedule a meeting"
-            />
+            {scriptLoaded ? (
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/jvebjN3kNYeKPklkqlye"
+                style={{
+                  width: '100%',
+                  border: 'none',
+                  overflow: 'visible',
+                  height: '700px',
+                  borderRadius: '0.5rem'
+                }}
+                scrolling="yes"
+                id="jvebjN3kNYeKPklkqlye_dialog"
+                title="Schedule a meeting"
+              />
+            ) : (
+              <div className="flex items-center justify-center h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>

@@ -1,6 +1,10 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
+import puppeteer from 'puppeteer';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create projects directory if it doesn't exist
 const projectsDir = path.join(__dirname, '../public/projects');
@@ -10,13 +14,15 @@ if (!fs.existsSync(projectsDir)) {
 
 // List of websites to capture
 const websites = [
-  { url: 'https://launchpad-website-craft.vercel.app/', filename: 'launchpad.png' },
-  { url: 'https://image-source-finder.vercel.app/', filename: 'image-source-finder.png' },
-  { url: 'https://timepiece.site/', filename: 'timepiece.png' },
-  { url: 'https://aha-innovations.com/', filename: 'aha-innovations.png' },
-  { url: 'https://millennialbusinessinnovations.com/', filename: 'millennial.png' },
-  { url: 'http://rrtwins.com/', filename: 'rrtwins.png' },
-  { url: 'http://undertakeph.com/', filename: 'undertake.png' }
+  { url: 'https://launchpad-website-craft.vercel.app/', filename: 'launchpad.jpg' },
+  { url: 'https://image-source-finder.vercel.app/', filename: 'image-source-finder.jpg' },
+  { url: 'https://timepiece.site/', filename: 'timepiece.jpg' },
+  { url: 'https://aha-innovations.com/', filename: 'aha-innovations.jpg' },
+  { url: 'https://www.millennialbusinessinnovations.com/', filename: 'millennial.jpg' },
+  { url: 'http://rrtwins.com/', filename: 'rrtwins.jpg' },
+  { url: 'http://undertakeph.com/', filename: 'undertake.jpg' },
+  { url: 'https://vidrec-coral.vercel.app/', filename: 'vidrec.jpg' },
+  { url: 'https://workwise-eosin.vercel.app/', filename: 'workwise.jpg' }
 ];
 
 async function captureScreenshots() {
@@ -39,13 +45,14 @@ async function captureScreenshots() {
       });
       
       // Wait a bit for any animations to complete
-      await page.waitForTimeout(2000);
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Take screenshot
+      // Take screenshot of the hero section (viewport only)
       await page.screenshot({
         path: path.join(projectsDir, site.filename),
         fullPage: false,
-        quality: 90
+        quality: 90,
+        type: 'jpeg'
       });
       
       console.log(`Saved screenshot for ${site.url}`);

@@ -1,0 +1,80 @@
+name: Update Project Screenshots
+
+on:
+  # Run automatically every week on Sunday at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * 0'
+  
+  # Allow manual triggering
+  workflow_dispatch:
+  
+  # Run when changes are made to the screenshot scripts
+  push:
+    paths:
+      - 'scripts/auto-update-screenshots.js'
+      - 'scripts/capture-screenshots.js'
+      - '.github/workflows/update-screenshots.yml'
+
+jobs:
+  update-screenshots:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: './package-lock.json'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Puppeteer dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libnss3-dev \
+          libatk-bridge2.0-dev \
+          libdrm-dev \
+          libxkbcommon-dev \
+          libgtk-3-dev \
+          libasound2-dev
+    
+    - name: Update screenshots
+      run: npm run update-screenshots
+    
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain public/projects/*.jpg)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add public/projects/*.jpg
+        git commit -m "🤖 Auto-update project screenshots [skip ci]"
+        git push
+    
+    - name: Create summary
+      if: always()
+      run: |
+        echo "## Screenshot Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "- **Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+        echo "- **Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]; then
+          echo "- **Changes:** Screenshots were updated and committed" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "- **Changes:** No screenshot changes detected" >> $GITHUB_STEP_SUMMARY
+        fi

@@ -636,7 +636,75 @@ const Index = () => {
                   { name: "Custom CSS", icon: <Layers className="w-4 h-4" /> }
                 ]}
                 accentColor="#3b82f6"
-                liveUrl="https://millennialbusinessinnovations.com/"
+                liveUrl="https://www.millennialbusinessinnovations.com/"
+              />
+            </Suspense>
+          </ErrorBoundary>
+
+          {/* VidRec Project */}
+          <ErrorBoundary
+            fallback={
+              <div className="glass-effect p-6">
+                <h3 className="text-xl font-semibold mb-4">VidRec</h3>
+                <p className="text-muted-foreground">Project details unavailable</p>
+              </div>
+            }
+          >
+            <Suspense fallback={<LoadingFallback />}>
+              <FeaturedProject
+                title="VidRec"
+                subtitle="AI-Powered Video Recording & Analysis Platform"
+                description="A modern video recording application with AI-powered features for content creators and professionals. Includes real-time recording, video analysis, and cloud storage capabilities."
+                image="/projects/vidrec.jpg"
+                tagline="Record, analyze, and enhance your video content with AI-powered tools designed for modern content creators."
+                features={[
+                  { text: "Real-time video recording with high-quality output." },
+                  { text: "AI-powered video analysis and enhancement features." },
+                  { text: "Cloud storage integration for seamless file management." },
+                  { text: "Responsive design optimized for all devices." }
+                ]}
+                technologies={[
+                  { name: "React", icon: <LayoutGrid className="w-4 h-4" /> },
+                  { name: "TypeScript", icon: <FileJson className="w-4 h-4" /> },
+                  { name: "Tailwind CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "AI Integration", icon: <Boxes className="w-4 h-4" /> }
+                ]}
+                accentColor="#10b981"
+                liveUrl="https://vidrec-coral.vercel.app/"
+              />
+            </Suspense>
+          </ErrorBoundary>
+
+          {/* WorkWise Project */}
+          <ErrorBoundary
+            fallback={
+              <div className="glass-effect p-6">
+                <h3 className="text-xl font-semibold mb-4">WorkWise</h3>
+                <p className="text-muted-foreground">Project details unavailable</p>
+              </div>
+            }
+          >
+            <Suspense fallback={<LoadingFallback />}>
+              <FeaturedProject
+                title="WorkWise"
+                subtitle="Smart Productivity & Task Management Platform"
+                description="A comprehensive productivity platform designed to help teams and individuals manage tasks, track progress, and optimize workflows. Features intelligent scheduling, collaboration tools, and performance analytics."
+                image="/projects/workwise.jpg"
+                tagline="Boost your productivity with intelligent task management, team collaboration, and workflow optimization tools."
+                features={[
+                  { text: "Intelligent task scheduling and priority management." },
+                  { text: "Real-time team collaboration and communication tools." },
+                  { text: "Advanced analytics and productivity insights." },
+                  { text: "Cross-platform compatibility and mobile optimization." }
+                ]}
+                technologies={[
+                  { name: "Next.js", icon: <LayoutGrid className="w-4 h-4" /> },
+                  { name: "React", icon: <FileJson className="w-4 h-4" /> },
+                  { name: "TypeScript", icon: <Layers className="w-4 h-4" /> },
+                  { name: "Database", icon: <Boxes className="w-4 h-4" /> }
+                ]}
+                accentColor="#8b5cf6"
+                liveUrl="https://workwise-eosin.vercel.app/"
               />
             </Suspense>
           </ErrorBoundary>
