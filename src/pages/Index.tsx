@@ -463,6 +463,45 @@ const Index = () => {
                 ]}
                 accentColor="#ff3366"
                 liveUrl="https://launchpad-website-craft.vercel.app/"
+                useLiveThumbnail={true}
+              />
+            </Suspense>
+          </ErrorBoundary>
+
+          {/* BizPulse CRM Project */}
+          <ErrorBoundary
+            fallback={
+              <div className="glass-effect p-6">
+                <h3 className="text-2xl font-bold mb-2">BizPulse CRM</h3>
+                <p className="text-muted-foreground mb-4">Comprehensive CRM with Email Marketing</p>
+              </div>
+            }
+          >
+            <Suspense fallback={<LoadingFallback />}>
+              <FeaturedProject
+                title="BizPulse CRM"
+                subtitle="Comprehensive CRM Platform with Email Marketing"
+                description="A powerful Customer Relationship Management system built with modern web technologies, featuring email marketing automation, lead tracking, and comprehensive business tools to streamline operations and boost sales."
+                image="/projects/bizpulse-crm.jpg"
+                tagline="Transform your business with our all-in-one CRM solution featuring advanced email marketing and lead management."
+                features={[
+                  { text: "Built with Next.js, React, and TypeScript for enterprise scalability." },
+                  { text: "Integrated email marketing automation and campaign management." },
+                  { text: "Advanced lead tracking and customer relationship management." },
+                  { text: "Responsive design optimized for all devices and platforms." },
+                  { text: "Real-time analytics and performance monitoring dashboard." }
+                ]}
+                technologies={[
+                  { name: "Next.js", icon: <Server className="w-4 h-4" /> },
+                  { name: "React", icon: <Code className="w-4 h-4" /> },
+                  { name: "TypeScript", icon: <FileCode className="w-4 h-4" /> },
+                  { name: "Tailwind CSS", icon: <Layers className="w-4 h-4" /> },
+                  { name: "Email Marketing", icon: <MessageSquare className="w-4 h-4" /> },
+                  { name: "CRM Database", icon: <Database className="w-4 h-4" /> }
+                ]}
+                accentColor="#10b981"
+                liveUrl="https://bizpulse-three.vercel.app/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -502,6 +541,7 @@ const Index = () => {
                 ]}
                 accentColor="#3366ff"
                 liveUrl="https://image-source-finder.vercel.app/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -536,6 +576,7 @@ const Index = () => {
                 ]}
                 accentColor="#6633ff"
                 liveUrl="https://timepiece.site/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -570,6 +611,7 @@ const Index = () => {
                 ]}
                 accentColor="#33cc66"
                 liveUrl="https://aha-innovations.com/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -604,6 +646,7 @@ const Index = () => {
                 ]}
                 accentColor="#6366f1"
                 liveUrl="https://start.millennialbusinessacademy.net/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -637,6 +680,7 @@ const Index = () => {
                 ]}
                 accentColor="#3b82f6"
                 liveUrl="https://www.millennialbusinessinnovations.com/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -671,6 +715,7 @@ const Index = () => {
                 ]}
                 accentColor="#10b981"
                 liveUrl="https://vidrec-coral.vercel.app/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>
@@ -705,6 +750,7 @@ const Index = () => {
                 ]}
                 accentColor="#8b5cf6"
                 liveUrl="https://workwise-eosin.vercel.app/"
+                useLiveThumbnail={true}
               />
             </Suspense>
           </ErrorBoundary>

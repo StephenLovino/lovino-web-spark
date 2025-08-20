@@ -1,6 +1,6 @@
 import { useState, useEffect, memo, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, RefreshCw, Eye, Image as ImageIcon } from "lucide-react";
 import TiltCard from "./TiltCard";
 
 interface FeaturePoint {
@@ -23,6 +23,7 @@ interface FeaturedProjectProps {
   className?: string;
   liveUrl?: string;
   tagline?: string; // Short descriptive text for the project
+  useLiveThumbnail?: boolean; // New prop to enable live thumbnails
 }
 
 const FeaturedProject = ({
@@ -36,9 +37,14 @@ const FeaturedProject = ({
   className,
   liveUrl,
   tagline,
+  useLiveThumbnail = false,
 }: FeaturedProjectProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [liveThumbnailUrl, setLiveThumbnailUrl] = useState<string | null>(null);
+  const [isLoadingLive, setIsLoadingLive] = useState(false);
+  const [showLiveThumbnail, setShowLiveThumbnail] = useState(false);
+  const [liveThumbnailError, setLiveThumbnailError] = useState(false);
 
   // Intersection Observer to detect when card is in viewport
   useEffect(() => {
@@ -64,6 +70,51 @@ const FeaturedProject = ({
 
   const handleImageLoad = () => {
     setImageLoaded(true);
+  };
+
+  // Generate live thumbnail using screenshot API
+  const generateLiveThumbnail = async () => {
+    if (!liveUrl) return;
+    
+    setIsLoadingLive(true);
+    setLiveThumbnailError(false);
+    
+    try {
+      // Use a screenshot API service (you can replace with your preferred service)
+      const screenshotUrl = `https://api.apiflash.com/v1/urltoimage?access_key=demo&url=${encodeURIComponent(liveUrl)}&width=800&height=600&format=jpeg&quality=85&response_type=image`;
+      
+      // Test if the image loads
+      const img = new Image();
+      img.onload = () => {
+        setLiveThumbnailUrl(screenshotUrl);
+        setIsLoadingLive(false);
+      };
+      img.onerror = () => {
+        // Fallback to another service or static image
+        setLiveThumbnailError(true);
+        setIsLoadingLive(false);
+      };
+      img.src = screenshotUrl;
+      
+      // Timeout fallback
+      setTimeout(() => {
+        if (isLoadingLive) {
+          setLiveThumbnailError(true);
+          setIsLoadingLive(false);
+        }
+      }, 10000);
+      
+    } catch (error) {
+      setLiveThumbnailError(true);
+      setIsLoadingLive(false);
+    }
+  };
+
+  const toggleLiveThumbnail = () => {
+    if (!showLiveThumbnail && !liveThumbnailUrl && !liveThumbnailError) {
+      generateLiveThumbnail();
+    }
+    setShowLiveThumbnail(!showLiveThumbnail);
   };
 
   return (
@@ -138,6 +189,39 @@ const FeaturedProject = ({
                 </div>
               )}
 
+              {/* Live thumbnail indicator and toggle */}
+              {useLiveThumbnail && liveUrl && (
+                <div className="mb-4 pl-4 border-l-2 border-green-500/60">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                      <p className="text-xs text-green-500/80 font-medium">
+                        Live Thumbnail Available
+                      </p>
+                    </div>
+                    <button
+                      onClick={toggleLiveThumbnail}
+                      className="flex items-center gap-2 px-3 py-1.5 bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400 text-xs font-medium rounded-md transition-colors"
+                    >
+                      {showLiveThumbnail ? (
+                        <>
+                          <ImageIcon className="w-3 h-3" />
+                          Static
+                        </>
+                      ) : (
+                        <>
+                          <Eye className="w-3 h-3" />
+                          Live
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Toggle between live thumbnail and static image
+                  </p>
+                </div>
+              )}
+
               {/* Stylized background frame */}
               <div
                 className="absolute -inset-4 rounded-2xl z-0 opacity-80"
@@ -183,16 +267,82 @@ const FeaturedProject = ({
                     </div>
                   </div>
 
-                  <img
-                    src={image}
-                    alt={`${title} project screenshot`}
-                    className={cn(
-                      "w-full h-full object-cover transition-all duration-500 pt-8", // Added padding-top for the browser frame
-                      imageLoaded ? "opacity-100" : "opacity-0"
-                    )}
-                    loading="lazy"
-                    onLoad={handleImageLoad}
-                  />
+                  {useLiveThumbnail && liveUrl && showLiveThumbnail ? (
+                    <div className="relative">
+                      {/* Loading state for live thumbnail */}
+                      {isLoadingLive && (
+                        <div className="w-full h-full min-h-[300px] bg-secondary/20 animate-pulse rounded-xl flex items-center justify-center">
+                          <div className="text-center">
+                            <RefreshCw className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                            <p className="text-sm text-muted-foreground">Generating live thumbnail...</p>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Live thumbnail */}
+                      {liveThumbnailUrl && !isLoadingLive && (
+                        <img
+                          src={liveThumbnailUrl}
+                          alt={`${title} live preview`}
+                          className="w-full h-full object-cover transition-all duration-500 pt-8"
+                          loading="lazy"
+                        />
+                      )}
+                      
+                      {/* Error state - fallback to static */}
+                      {liveThumbnailError && !isLoadingLive && (
+                        <div className="w-full h-full min-h-[300px] bg-secondary/20 rounded-xl flex flex-col items-center justify-center">
+                          <p className="text-sm text-muted-foreground mb-2">Live thumbnail unavailable</p>
+                          <p className="text-xs text-muted-foreground mb-3">Showing static image instead</p>
+                          <button
+                            onClick={() => {
+                              setLiveThumbnailError(false);
+                              generateLiveThumbnail();
+                            }}
+                            className="flex items-center gap-2 px-3 py-1.5 bg-primary/20 hover:bg-primary/30 text-primary text-xs font-medium rounded-md transition-colors"
+                          >
+                            <RefreshCw className="w-3 h-3" />
+                            Retry
+                          </button>
+                        </div>
+                      )}
+                      
+                      {/* Live site overlay */}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <div className="bg-white/90 backdrop-blur-sm rounded-lg p-4 text-center">
+                          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </div>
+                          <p className="text-sm font-semibold text-gray-800 mb-1">Live Site</p>
+                          <p className="text-xs text-gray-600 mb-3">Click to visit the website</p>
+                          <a
+                            href={liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-md transition-colors"
+                          >
+                            Visit Live Site
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={image}
+                      alt={`${title} project screenshot`}
+                      className={cn(
+                        "w-full h-full object-cover transition-all duration-500 pt-8", // Added padding-top for the browser frame
+                        imageLoaded ? "opacity-100" : "opacity-0"
+                      )}
+                      loading="lazy"
+                      onLoad={handleImageLoad}
+                    />
+                  )}
 
                   {/* Circular view details button */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
