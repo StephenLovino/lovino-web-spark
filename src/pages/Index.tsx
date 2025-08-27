@@ -211,11 +211,34 @@ const Index = () => {
       <FloatingChatButton />
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center">
-        <div className="container mx-auto px-4 z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Left side - Text content */}
-          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
+      <section id="home" className="relative py-20 flex flex-col">
+        {/* Profile Card - At the top, below header */}
+        <div className="flex justify-center items-center pt-32 pb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <div className="w-full max-w-sm lg:max-w-md flex justify-center">
+            <ProfileCard
+              name="Stephen Lovino"
+              title="Computer Engineer & AI Expert"
+              handle="stephenlovino"
+              status="Available for Projects"
+              contactText="Contact Me"
+              avatarUrl="/StephenLovino.png"
+              showUserInfo={true}
+              enableTilt={true}
+              enableMobileTilt={false}
+              onContactClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Hero Text Content - Below ProfileCard */}
+        <div className="flex justify-center py-12">
+          <div className="container mx-auto px-4 z-10 flex flex-col items-center justify-center text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
               Hi, I'm <span className="text-gradient">Stephen</span>,{" "}
               <TypeAnimation
                 sequence={[
@@ -234,10 +257,10 @@ const Index = () => {
                 cursor={true}
               />
             </h1>
-            <p className="max-w-2xl mx-auto lg:mx-0 text-lg mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <p className="max-w-2xl mx-auto text-lg mb-8 animate-fade-in" style={{ animationDelay: "0.8s" }}>
               A passionate Computer Engineer with a strong love for web development, automations, and AI tools. I'm focused on creating high-converting websites, sleek frontends, and smart business solutions through platforms like GoHighLevel, WordPress, and React.
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "1s" }}>
               <Button asChild>
                 <a href="#contact">Get in Touch</a>
               </Button>
@@ -246,32 +269,10 @@ const Index = () => {
               </Button>
             </div>
           </div>
-          
-          {/* Right side - Profile Card */}
-          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in order-1 lg:order-2 mb-8 lg:mb-0" style={{ animationDelay: "0.8s" }}>
-            <div className="w-full max-w-sm lg:max-w-md">
-              <ProfileCard
-                name="Stephen Lovino"
-                title="Computer Engineer & AI Expert"
-                handle="stephenlovino"
-                status="Available for Projects"
-                contactText="Contact Me"
-                avatarUrl="/StephenLovino.png"
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={false}
-                onContactClick={() => {
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              />
-            </div>
-          </div>
         </div>
-        <div className="absolute bottom-10 w-full flex justify-center animate-bounce">
-          <a href="#about" className="text-foreground/60 hover:text-foreground transition-colors">
+
+        <div className="flex justify-center pb-8">
+          <a href="#about" className="text-foreground/60 hover:text-foreground transition-colors animate-bounce">
             <ArrowDown />
           </a>
         </div>
@@ -287,9 +288,9 @@ const Index = () => {
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/5 via-transparent to-secondary/5 dark:from-secondary/10 dark:via-transparent dark:to-secondary/10 z-0"></div>
 
-        <div className="flex flex-col items-center min-h-[60vh] relative z-10 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center py-16 relative z-10 max-w-4xl mx-auto">
           {/* Text content */}
-          <div className="w-full py-8 z-20">
+          <div className="w-full py-4 z-20">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-3xl font-medium mb-6 text-gradient">Frontend Developer & GHL Expert</h3>
               <p className="mb-5 text-muted-foreground text-lg">
