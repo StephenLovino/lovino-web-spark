@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import CalendarDialog from "@/components/CalendarDialog";
 import FloatingChatButton from "@/components/FloatingChatButton";
+import ProfileCard from "@/components/ProfileCard";
 
 // Lazy load components that are not needed immediately
 // Add error boundaries to each lazy loaded component with better error handling
@@ -211,36 +212,62 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center">
-        <div className="container text-center px-4 z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-            Hi, I'm <span className="text-gradient">Stephen</span>,{" "}
-            <TypeAnimation
-              sequence={[
-                'a Computer Engineer',
-                1000,
-                'an AI Expert',
-                1000,
-                'a Frontend Developer',
-                1000,
-                'a GHL Specialist',
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-              cursor={true}
-            />
-          </h1>
-          <p className="max-w-2xl mx-auto text-lg mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            A passionate Computer Engineer with a strong love for web development, automations, and AI tools. I'm focused on creating high-converting websites, sleek frontends, and smart business solutions through platforms like GoHighLevel, WordPress, and React.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <Button asChild>
-              <a href="#contact">Get in Touch</a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="#projects">View Projects</a>
-            </Button>
+        <div className="container mx-auto px-4 z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Left side - Text content */}
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
+              Hi, I'm <span className="text-gradient">Stephen</span>,{" "}
+              <TypeAnimation
+                sequence={[
+                  'a Computer Engineer',
+                  1000,
+                  'an AI Expert',
+                  1000,
+                  'a Frontend Developer',
+                  1000,
+                  'a GHL Specialist',
+                  1000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+                cursor={true}
+              />
+            </h1>
+            <p className="max-w-2xl mx-auto lg:mx-0 text-lg mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+              A passionate Computer Engineer with a strong love for web development, automations, and AI tools. I'm focused on creating high-converting websites, sleek frontends, and smart business solutions through platforms like GoHighLevel, WordPress, and React.
+            </p>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+              <Button asChild>
+                <a href="#contact">Get in Touch</a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a href="#projects">View Projects</a>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Right side - Profile Card */}
+          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in order-1 lg:order-2 mb-8 lg:mb-0" style={{ animationDelay: "0.8s" }}>
+            <div className="w-full max-w-sm lg:max-w-md">
+              <ProfileCard
+                name="Stephen Lovino"
+                title="Computer Engineer & AI Expert"
+                handle="stephenlovino"
+                status="Available for Projects"
+                contactText="Contact Me"
+                avatarUrl="/StephenLovino.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                onContactClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              />
+            </div>
           </div>
         </div>
         <div className="absolute bottom-10 w-full flex justify-center animate-bounce">
