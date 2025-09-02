@@ -184,7 +184,7 @@ const Index = () => {
       ],
     },
     {
-      company: "Xfusion",
+      company: "xFusion",
       role: "Support Agent",
       period: "Nov 2022 - Present",
       descriptions: [
@@ -291,7 +291,7 @@ const Index = () => {
         <div className="flex flex-col items-center py-16 relative z-10 max-w-4xl mx-auto">
           {/* Text content */}
           <div className="w-full py-4 z-20">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto text-center">
               <h3 className="text-3xl font-medium mb-6 text-gradient">Frontend Developer & GHL Expert</h3>
               <p className="mb-5 text-muted-foreground text-lg">
                 Based in San Fernando, Pampanga, Philippines, I specialize in creating modern web experiences and streamlining business operations through cutting-edge technologies.
@@ -299,7 +299,7 @@ const Index = () => {
               <p className="mb-8 text-muted-foreground text-lg">
                 With over 2 years of dedicated experience in GoHighLevel development, I've been actively building websites and web applications. My expertise spans across modern web technologies and automation tools, allowing me to create comprehensive solutions for businesses.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Button variant="outline" asChild size="sm" className="border-primary/30 hover:border-primary">
                   <a href="https://github.com/StephenLovino" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <Github className="w-5 h-5" />
@@ -673,7 +673,7 @@ const Index = () => {
                   { name: "Responsive Design", icon: <LayoutGrid className="w-4 h-4" /> }
                 ]}
                 accentColor="#6366f1"
-                liveUrl="https://start.millennialbusinessacademy.net/"
+                liveUrl="https://jcdelasalas.vercel.app/"
                 useLiveThumbnail={true}
               />
             </Suspense>

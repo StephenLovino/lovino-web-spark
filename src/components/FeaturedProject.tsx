@@ -191,34 +191,24 @@ const FeaturedProject = ({
 
               {/* Live thumbnail indicator and toggle */}
               {useLiveThumbnail && liveUrl && (
-                <div className="mb-4 pl-4 border-l-2 border-green-500/60">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <p className="text-xs text-green-500/80 font-medium">
-                        Live Thumbnail Available
-                      </p>
-                    </div>
+                <div className="mb-2">
+                  <div className="flex items-center justify-end">
                     <button
                       onClick={toggleLiveThumbnail}
+                      aria-label={showLiveThumbnail ? 'Show static thumbnail' : 'Show live thumbnail'}
                       className="flex items-center gap-2 px-3 py-1.5 bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400 text-xs font-medium rounded-md transition-colors"
                     >
                       {showLiveThumbnail ? (
                         <>
                           <ImageIcon className="w-3 h-3" />
-                          Static
                         </>
                       ) : (
                         <>
                           <Eye className="w-3 h-3" />
-                          Live
                         </>
                       )}
                     </button>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Toggle between live thumbnail and static image
-                  </p>
                 </div>
               )}
 
