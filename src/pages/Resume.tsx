@@ -81,7 +81,7 @@ const Resume = () => {
       <div className="max-w-4xl mx-auto my-16 p-8 bg-background print:bg-white print:text-black print:my-0 print:p-6">
         <header className="mb-8 print:mb-6">
           <h1 className="text-4xl font-bold mb-2 text-gradient print:text-black">Stephen Lovino</h1>
-          <p className="text-xl text-primary print:text-gray-800">Frontend Developer & GoHighLevel Expert</p>
+          <p className="text-xl text-primary print:text-gray-800">Full Stack Developer & GoHighLevel Expert</p>
           <div className="mt-4 text-muted-foreground print:text-gray-600">
             <p>San Fernando, Pampanga, Philippines</p>
             <p>
@@ -101,7 +101,7 @@ const Resume = () => {
           </h2>
           <p className="text-muted-foreground print:text-gray-700">
             A passionate Web Developer with a strong love for web development, automations, and AI tools.
-            Focused on creating high-converting websites, sleek frontends, and smart business solutions
+            Focused on creating high-converting websites, full stack applications, and smart business solutions
             through platforms like GoHighLevel, WordPress, and React.
           </p>
         </section>

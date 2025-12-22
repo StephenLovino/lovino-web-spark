@@ -145,7 +145,7 @@ class ErrorBoundary extends React.Component<
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Stephen Lovino | Frontend Developer & GHL Expert";
+    document.title = "Stephen Lovino | Full Stack Developer & GHL Expert";
   }, []);
 
   const tools = {
@@ -246,7 +246,7 @@ const Index = () => {
                   1000,
                   'an AI Expert',
                   1000,
-                  'a Frontend Developer',
+                  'a Full Stack Developer',
                   1000,
                   'a GHL Specialist',
                   1000,
@@ -258,7 +258,7 @@ const Index = () => {
               />
             </h1>
             <p className="max-w-2xl mx-auto text-lg mb-8 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-              A passionate Computer Engineer with a strong love for web development, automations, and AI tools. I'm focused on creating high-converting websites, sleek frontends, and smart business solutions through platforms like GoHighLevel, WordPress, and React.
+              A passionate Computer Engineer with a strong love for web development, automations, and AI tools. I'm focused on creating high-converting websites, full stack applications, and smart business solutions through platforms like GoHighLevel, WordPress, and React.
             </p>
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "1s" }}>
               <Button asChild>
@@ -292,7 +292,7 @@ const Index = () => {
           {/* Text content */}
           <div className="w-full py-4 z-20">
             <div className="max-w-3xl mx-auto text-center">
-              <h3 className="text-3xl font-medium mb-6 text-gradient">Frontend Developer & GHL Expert</h3>
+              <h3 className="text-3xl font-medium mb-6 text-gradient">Full Stack Developer & GHL Expert</h3>
               <p className="mb-5 text-muted-foreground text-lg">
                 Based in San Fernando, Pampanga, Philippines, I specialize in creating modern web experiences and streamlining business operations through cutting-edge technologies.
               </p>
