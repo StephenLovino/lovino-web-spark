@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# Stephen Lovino - Portfolio Website
 
-## Project info
+A modern, responsive portfolio website showcasing my work as a Full Stack Developer and GoHighLevel Expert. Built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/632cc5e2-78fc-450c-85e6-54913fd654ef
+## 🚀 Features
 
-## How can I edit this code?
+- **Modern UI/UX**: Clean, responsive design with dark/light theme support
+- **Project Showcase**: Interactive project cards with live previews
+- **Contact Integration**: GoHighLevel contact form and calendar booking
+- **Performance Optimized**: Fast loading times and smooth animations
+- **SEO Friendly**: Optimized meta tags and structured data
+- **PWA Ready**: Progressive Web App support with offline capabilities
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **UI Components**: shadcn/ui, Radix UI
+- **Routing**: React Router
+- **Animations**: Framer Motion, React Type Animation
+- **Build Tool**: Vite
+- **Deployment**: Vercel
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/632cc5e2-78fc-450c-85e6-54913fd654ef) and start prompting.
+## 📦 Installation
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone the repository:
+```bash
+git clone https://github.com/StephenLovino/lovino-web-spark.git
+cd lovino-web-spark
+```
 
-**Use your preferred IDE**
+2. Install dependencies:
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🏗️ Build
 
-**Use GitHub Codespaces**
+To build for production:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run build
+```
 
-## What technologies are used for this project?
+The production build will be in the `dist` directory.
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## How can I deploy this project?
+## 🤝 Contributing
 
-Simply open [Lovable](https://lovable.dev/projects/632cc5e2-78fc-450c-85e6-54913fd654ef) and click on Share -> Publish.
+Feel free to fork this project and use it as a template for your own portfolio. If you find any bugs or have suggestions for improvements, pull requests are welcome!
 
-## Can I connect a custom domain to my Lovable project?
+## 📧 Contact
 
-Yes, you can!
+- **Email**: stephen.ben19@gmail.com
+- **Website**: [stephenjanlovino.com](https://stephenjanlovino.com)
+- **GitHub**: [@StephenLovino](https://github.com/StephenLovino)
+- **LinkedIn**: [stephenlovino](https://linkedin.com/in/stephenlovino)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Made with ❤️ by Stephen Lovino
