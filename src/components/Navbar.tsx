@@ -85,7 +85,7 @@ const Navbar = () => {
         {/* Logo - Left */}
         <div className="flex items-center">
           <a href="#home" className="text-xl font-bold text-gradient flex items-center gap-1.5 pl-1">
-            <span className="text-accent">SL</span>
+            <img src="/sl-logo.png" alt="SL Logo" className="h-8 w-auto" />
           </a>
         </div>
 
@@ -116,19 +116,17 @@ const Navbar = () => {
             <div className="relative" ref={moreMenuRef}>
               <button
                 onClick={() => setIsMoreMenuOpen(!isMoreMenuOpen)}
-                className={`text-sm font-medium px-3 py-1 rounded-full transition-all duration-200 flex items-center gap-1 ${
-                  isMoreMenuOpen
+                className={`text-sm font-medium px-3 py-1 rounded-full transition-all duration-200 flex items-center gap-1 ${isMoreMenuOpen
                     ? 'dark:bg-white/15 bg-black/10 text-accent'
                     : 'text-foreground/90 hover:bg-black/5 dark:hover:bg-white/10 hover:text-accent'
-                }`}
+                  }`}
               >
                 More
                 <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${isMoreMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               <div
-                className={`absolute right-0 mt-2 w-48 dark:bg-black/50 bg-white/30 backdrop-blur-lg rounded-[20px] shadow-lg border dark:border-white/10 border-gray-200/20 overflow-hidden transition-all duration-200 ${
-                  isMoreMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                }`}
+                className={`absolute right-0 mt-2 w-48 dark:bg-black/50 bg-white/30 backdrop-blur-lg rounded-[20px] shadow-lg border dark:border-white/10 border-gray-200/20 overflow-hidden transition-all duration-200 ${isMoreMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                  }`}
               >
                 <button
                   onClick={() => {
