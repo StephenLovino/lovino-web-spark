@@ -14,6 +14,8 @@ import {
 import CalendarDialog from "@/components/CalendarDialog";
 import FloatingChatButton from "@/components/FloatingChatButton";
 import ProfileCard from "@/components/ProfileCard";
+import PricingSection from "@/components/PricingSection";
+
 
 // Lazy load components that are not needed immediately
 // Add error boundaries to each lazy loaded component with better error handling
@@ -783,6 +785,14 @@ const Index = () => {
             </Suspense>
           </ErrorBoundary>
         </div>
+      </Section>
+
+      <Section
+        id="pricing"
+        title="Pricing"
+        subtitle="Transparent pricing for your business needs."
+      >
+        <PricingSection />
       </Section>
 
       {/* Contact Section */}

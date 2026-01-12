@@ -9,6 +9,8 @@ import Resume from "./pages/Resume";
 import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 
+
+
 // Lazy load the space background
 const SpaceBackground = lazy(() => import("@/components/SpaceBackground"));
 
@@ -31,6 +33,8 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/resume" element={<Resume />} />
               <Route path="/calendar" element={<Calendar />} />
+
+
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
