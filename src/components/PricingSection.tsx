@@ -39,23 +39,23 @@ const PricingSection = () => {
           {/* Subtle gradient overlay - Removed */}
 
           <div className="relative p-8 sm:p-10">
-            <div className="flex items-center justify-between gap-x-4">
-              <h3 id="tier-professional" className="text-xl font-semibold leading-8 text-foreground">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <h3 id="tier-professional" className="text-xl font-semibold leading-8 text-foreground text-center sm:text-left">
                 Professional Website Package
               </h3>
-              <div className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold leading-5 text-primary border border-primary/20">
+              <div className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold leading-5 text-primary border border-primary/20 shrink-0">
                 Limited-Time Offer
               </div>
             </div>
 
-            <div className="mt-6 flex items-baseline gap-x-2">
+            <div className="mt-6 flex items-baseline gap-x-2 justify-center sm:justify-start">
               <span className="text-5xl font-bold tracking-tight text-foreground">$250</span>
               <span className="text-sm font-semibold leading-6 text-muted-foreground">USD</span>
               <span className="text-lg text-muted-foreground line-through ml-2">$499</span>
             </div>
 
             <CalendarDialog>
-              <Button className="mt-8 w-full h-12 text-base font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300" size="lg">
+              <Button className="mt-8 w-full h-12 text-base font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 rounded-full" size="lg">
                 Claim This Offer <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CalendarDialog>
