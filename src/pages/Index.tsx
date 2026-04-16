@@ -177,7 +177,7 @@ const Index = () => {
   const experiences = [
     {
       company: "Freelance",
-      role: "GoHighLevel Automation and Website Expert",
+      role: "Full Stack Developer & GoHighLevel Automation Expert",
       period: "2023 - Present",
       descriptions: [
         "2+ years experience in GoHighLevel platform development",
@@ -186,23 +186,43 @@ const Index = () => {
       ],
     },
     {
-      company: "xFusion",
-      role: "Support Agent",
-      period: "Nov 2022 - Present",
+      company: "Aha Innovations",
+      role: "Full Stack Developer",
+      period: "2023",
       descriptions: [
-        "Client support and technical assistance",
-        "Integration of automation tools (Zapier, Make.com)",
-        "Process optimization and documentation",
+        "Built full stack web applications using React and modern tooling",
+        "Delivered client-facing features and internal business tools",
+        "Collaborated with stakeholders on product requirements and delivery",
       ],
     },
     {
       company: "Wells Fargo",
       role: "Senior Treasury Technical Support",
-      period: "Oct 2021 - Nov 2022",
+      period: "2021 - 2022",
       descriptions: [
         "Technical support and client assistance",
         "Process documentation and optimization",
         "Integration of automation workflows",
+      ],
+    },
+    {
+      company: "Sykes",
+      role: "Technical Support Representative",
+      period: "2019 - 2021",
+      descriptions: [
+        "Provided technical support and troubleshooting for client accounts",
+        "Resolved complex technical issues through systematic diagnosis",
+        "Maintained high customer satisfaction across sustained call volume",
+      ],
+    },
+    {
+      company: "Alorica",
+      role: "Technical Support Representative",
+      period: "2017 - 2019",
+      descriptions: [
+        "Delivered technical support and issue resolution for end users",
+        "Documented processes and escalation paths",
+        "Built strong foundations in customer service and technical communication",
       ],
     },
   ];
