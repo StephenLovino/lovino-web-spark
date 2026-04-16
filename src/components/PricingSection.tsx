@@ -49,9 +49,9 @@ const PricingSection = () => {
             </div>
 
             <div className="mt-6 flex items-baseline gap-x-2 justify-center sm:justify-start">
-              <span className="text-5xl font-bold tracking-tight text-foreground">$250</span>
+              <span className="text-5xl font-bold tracking-tight text-foreground">$1,400</span>
               <span className="text-sm font-semibold leading-6 text-muted-foreground">USD</span>
-              <span className="text-lg text-muted-foreground line-through ml-2">$499</span>
+              <span className="text-lg text-muted-foreground line-through ml-2">$2,000</span>
             </div>
 
             <CalendarDialog>
