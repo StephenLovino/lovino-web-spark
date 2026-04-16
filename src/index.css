@@ -181,7 +181,7 @@
     page-break-inside: avoid;
   }
 
-  section {
+  .resume-item {
     page-break-inside: avoid;
   }
 }

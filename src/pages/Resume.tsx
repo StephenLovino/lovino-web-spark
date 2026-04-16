@@ -132,7 +132,7 @@ const Resume = () => {
           </h2>
           <div className="space-y-6 print:space-y-4">
             {experiences.map((exp, index) => (
-              <div key={index}>
+              <div key={index} className="resume-item">
                 <h3 className="text-xl font-semibold">{exp.company}</h3>
                 <p className="text-primary print:text-gray-800">{exp.role}</p>
                 <p className="text-sm text-muted-foreground print:text-gray-600 mb-2">{exp.period}</p>
@@ -191,21 +191,21 @@ const Resume = () => {
             Projects
           </h2>
           <div className="space-y-4 print:space-y-3">
-            <div>
+            <div className="resume-item">
               <h3 className="text-lg font-medium">Launchpad Website Craft</h3>
               <p className="text-sm text-primary print:text-gray-800">React, Tailwind CSS, Vercel, Firebase</p>
               <p className="text-muted-foreground print:text-gray-700">
                 A modern agency website showcasing services in web design, branding, and business automation.
               </p>
             </div>
-            <div>
+            <div className="resume-item">
               <h3 className="text-lg font-medium">Image Source Finder</h3>
               <p className="text-sm text-primary print:text-gray-800">React, Tailwind CSS, Vercel, Supabase</p>
               <p className="text-muted-foreground print:text-gray-700">
                 A tool that helps users find the original source of images across the web.
               </p>
             </div>
-            <div>
+            <div className="resume-item">
               <h3 className="text-lg font-medium">Timepiece</h3>
               <p className="text-sm text-primary print:text-gray-800">React, Tailwind CSS, Vercel, Firebase</p>
               <p className="text-muted-foreground print:text-gray-700">
